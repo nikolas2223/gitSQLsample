@@ -1,0 +1,32 @@
+﻿<Window x:Class="SQLviever.AddDialogs.AddType"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SQLviever.AddDialogs"
+        mc:Ignorable="d"
+        Title="AddType" Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="*"/>
+            <ColumnDefinition  Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Column="0">
+            <TextBox Margin="0,20,0,0" Name="description"/>
+            <ComboBox Margin="0,30,0,0" Name="tType">
+                <ComboBoxItem Name="it0" IsSelected="True">
+                    <TextBlock Text="Кровля"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Отделочные материалы"/>
+                </ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="1">
+            <TextBlock TextWrapping="Wrap" Margin="0,1,0,20">Описание(черепица, паркет, ламинат, рубероид)</TextBlock>
+            <TextBlock Margin="1">Тип товара.</TextBlock>
+            <Label BorderBrush="Red"  Margin="0,20,0,0" BorderThickness="4">Укажите тип!</Label>
+            <Button Margin="50,100,0,0" Name="btn_OK" Content="OK" Width="40" Height="20" Click="btn_OK_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

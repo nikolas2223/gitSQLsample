@@ -1,0 +1,30 @@
+﻿<Window x:Class="SQLviever.AddClients"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SQLviever"
+        mc:Ignorable="d"
+        Title="AddClients" Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="*"/>
+            <ColumnDefinition  Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Column="0">
+            <TextBox Name="fname"/>
+            <TextBox Name="adress"/>
+            <TextBox Name="phone"/>
+            <CheckBox Name="regularity" IsChecked="False"/>
+            <TextBox Name="name"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="1">
+            <TextBlock Margin="1">Фамилия</TextBlock>
+            <TextBlock Margin="1">Адрес</TextBlock>
+            <TextBlock Margin="1">Телефон</TextBlock>
+            <TextBlock Margin="1">Постоянный клиент</TextBlock>
+            <TextBlock Margin="1">Имя</TextBlock>
+            <Button Margin="50,140,0,0" Name="btn_OK" Content="OK" Width="40" Height="20" Click="btn_OK_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
