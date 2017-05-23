@@ -59,7 +59,7 @@ namespace SQLviever
             Base.Close();
             SelProd.Columns[0].Header = "Номер заказа";
             SelProd.Columns[1].Header = "Номер продажи";
-            SelProd.Columns[2].Header = "Номер продукта";
+            SelProd.Columns[2].Header = "Продукт и цена";
         }
 
         private void butType_Click(object sender, RoutedEventArgs e)
@@ -108,7 +108,11 @@ namespace SQLviever
 
         private void butAddSells_Click(object sender, RoutedEventArgs e)
         {
-
+            var dlg = new AddDialogs.AddSells();
+            if (dlg.ShowDialog() == true)
+            {
+                MessageBox.Show("Очевидно, добавлена строка");
+            }
         }
     }
 }

@@ -25,7 +25,8 @@ namespace SQLviever
 
         public NpgsqlDataReader getSells()
         {
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM \"Sells\"", connect);
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT \"Sells\".id_sells, \"Sells\".cound, \"Sells\".date_sell, (\"Client\".id_client || ', ' || \"Client\".\"name\" || ' ' || \"Client\".\"familyName\"), \"Sells\".date_delivery " 
+                + "FROM \"Sells\", \"Client\" WHERE \"Sells\".id_client = \"Client\".id_client", connect);
             NpgsqlDataReader dr = cmd.ExecuteReader();
 
             return dr;
@@ -33,7 +34,7 @@ namespace SQLviever
 
         public NpgsqlDataReader getProducts()
         {
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM \"Product\"", connect);
+            NpgsqlCommand cmd = new NpgsqlCommand("select \"Product\".id_product, \"Product\".\"name\",\"Product\".price,\"Product\".\"isExist\",(\"Type\".id_type || '. ' || \"Type\".description ||' '||\"Type\".\"type\"), \"Product\".count from \"Product\",\"Type\" WHERE \"Product\".id_type = \"Type\".id_type order by id_product", connect);
             NpgsqlDataReader dr = cmd.ExecuteReader();
 
             return dr;
@@ -49,7 +50,7 @@ namespace SQLviever
 
         public NpgsqlDataReader getSelProd()
         {
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM \"Sells-Product\"", connect);
+            NpgsqlCommand cmd = new NpgsqlCommand("select \"Sells-Product\".id, \"Sells-Product\".id_sells,(\"Product\".id_product || '. ' || \"Product\".\"name\" ||' '||\"Product\".\"price\") from \"Sells-Product\",\"Product\" WHERE \"Product\".id_product = \"Sells-Product\".id_product order by id", connect);
             NpgsqlDataReader dr = cmd.ExecuteReader();
 
             return dr;
@@ -59,7 +60,6 @@ namespace SQLviever
         {
             NpgsqlCommand cmd = new NpgsqlCommand("SELECT * FROM \"Type\"", connect);
             NpgsqlDataReader dr = cmd.ExecuteReader();
-
             return dr;
         }
         public void InsertClients(string fName, string adress, string phone, bool regular, string name)
@@ -82,6 +82,20 @@ namespace SQLviever
             name = ToBaStr(name);
             price = ToBaStr(price);
             NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO \"Product\" (\"name\", price, \"isExist\", id_type, count) values (" + name + "," + price + "," + isExist + "," + id_type + "," + count + ")", connect);
+            cmd.ExecuteReader();
+        }
+        public void InsertSells(int count, DateTime date_sell, int client_id, DateTime delivery) 
+        {
+
+        }
+        public void InsertSells(DateTime date_sell, int client_id, DateTime delivery)
+        {
+
+        }
+        public void InsertSells(DateTime date_sell, int client_id)
+        {
+            string p = ToBaStr(Convert.ToString(date_sell.Date));
+            NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO \"Sells\" (date_sell, id_client) values (" + p + "," + client_id + ")", connect);
             cmd.ExecuteReader();
         }
         private string ToBaStr(string x)

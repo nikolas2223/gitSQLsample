@@ -22,3 +22,5 @@ C:\Users\Nikolas_lol\documents\visual studio 2015\Projects\SQLviever\SQLviever\o
 C:\Users\Nikolas_lol\documents\visual studio 2015\Projects\SQLviever\SQLviever\obj\Debug\AddDialogs\AddType.baml
 C:\Users\Nikolas_lol\documents\visual studio 2015\Projects\SQLviever\SQLviever\obj\Debug\AddDialogs\AddProduct.g.cs
 C:\Users\Nikolas_lol\documents\visual studio 2015\Projects\SQLviever\SQLviever\obj\Debug\AddDialogs\AddProduct.baml
+C:\Users\Nikolas_lol\Documents\Visual Studio 2015\Projects\SQLviever\SQLviever\obj\Debug\AddDialogs\AddSells.g.cs
+C:\Users\Nikolas_lol\Documents\Visual Studio 2015\Projects\SQLviever\SQLviever\obj\Debug\AddDialogs\AddSells.baml
