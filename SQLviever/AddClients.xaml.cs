@@ -38,5 +38,10 @@ namespace SQLviever
                 DialogResult = true;
             }
         }
+
+        private void phone_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = "0123456789-".IndexOf(e.Text) < 0;
+        }
     }
 }

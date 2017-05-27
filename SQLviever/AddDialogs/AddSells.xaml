@@ -14,16 +14,14 @@
         <StackPanel Orientation="Vertical" Grid.Column="0">
             <DatePicker Name="dateSell"/>
             <TextBox Name="client_id" PreviewTextInput="client_id_PreviewTextInput"/>
-            <TextBox Name="phone"/>
-            <CheckBox Name="regularity" IsChecked="False"/>
-            <TextBox Name="name"/>
+            <TextBox Name="count" PreviewTextInput="count_PreviewTextInput"/>
+            <DatePicker Name="dateDelivery"/>
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Column="1">
-            <TextBlock Margin="1">Дата</TextBlock>
-            <TextBlock Margin="1">Клиент</TextBlock>
-            <TextBlock Margin="1">Телефон</TextBlock>
-            <TextBlock Margin="1">Постоянный клиент</TextBlock>
-            <TextBlock Margin="1">Имя</TextBlock>
+            <TextBlock Margin="1">Дата продажи</TextBlock>
+            <TextBlock Margin="1">Клиент(ID)</TextBlock>
+            <TextBlock Margin="1">Количество</TextBlock>
+            <TextBlock Margin="1,10,1,1">Дата доставки</TextBlock>
             <Button Margin="50,140,0,0" Name="btn_OK" Content="OK" Width="40" Height="20" Click="btn_OK_Click"/>
         </StackPanel>
     </Grid>

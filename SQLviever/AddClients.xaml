@@ -14,7 +14,7 @@
         <StackPanel Orientation="Vertical" Grid.Column="0">
             <TextBox Name="fname"/>
             <TextBox Name="adress"/>
-            <TextBox Name="phone"/>
+            <TextBox Name="phone" PreviewTextInput="phone_PreviewTextInput"/>
             <CheckBox Name="regularity" IsChecked="False"/>
             <TextBox Name="name"/>
         </StackPanel>

@@ -34,7 +34,7 @@ namespace SQLviever
 
         public NpgsqlDataReader getProducts()
         {
-            NpgsqlCommand cmd = new NpgsqlCommand("select \"Product\".id_product, \"Product\".\"name\",\"Product\".price,\"Product\".\"isExist\",(\"Type\".id_type || '. ' || \"Type\".description ||' '||\"Type\".\"type\"), \"Product\".count from \"Product\",\"Type\" WHERE \"Product\".id_type = \"Type\".id_type order by id_product", connect);
+            NpgsqlCommand cmd = new NpgsqlCommand("select \"Product\".id_product, \"Product\".\"name\",\"Product\".price,\"Product\".\"isExist\",(\"Type\".id_type || '. ' || \"Type\".description), \"Type\".\"type\", \"Product\".count from \"Product\",\"Type\" WHERE \"Product\".id_type = \"Type\".id_type order by id_product", connect);
             NpgsqlDataReader dr = cmd.ExecuteReader();
 
             return dr;
@@ -86,11 +86,23 @@ namespace SQLviever
         }
         public void InsertSells(int count, DateTime date_sell, int client_id, DateTime delivery) 
         {
-
+            string p = ToBaStr(Convert.ToString(date_sell.Date));
+            string g = ToBaStr(Convert.ToString(delivery.Date));
+            NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO \"Sells\" (date_sell, id_client, date_delivery,cound) values (" + p + "," + client_id + "," + g + ","+ count+")", connect);
+            cmd.ExecuteReader();
+        }
+        public void InsertSells(int count, DateTime date_sell, int client_id)
+        {
+            string p = ToBaStr(Convert.ToString(date_sell.Date));
+            NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO \"Sells\" (date_sell, id_client, cound) values (" + p + "," + client_id + "," + count + ")", connect);
+            cmd.ExecuteReader();
         }
         public void InsertSells(DateTime date_sell, int client_id, DateTime delivery)
         {
-
+            string p = ToBaStr(Convert.ToString(date_sell.Date));
+            string g = ToBaStr(Convert.ToString(delivery.Date));
+            NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO \"Sells\" (date_sell, id_client, date_delivery) values (" + p + "," + client_id + "," + g + ")", connect);
+            cmd.ExecuteReader();
         }
         public void InsertSells(DateTime date_sell, int client_id)
         {

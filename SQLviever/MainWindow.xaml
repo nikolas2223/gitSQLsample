@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SQLviever"
         mc:Ignorable="d"
-        Title="MainWindow" Height="417" Width="658">
+        Title="MainWindow" Height="417" Width="720">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -22,16 +22,20 @@
                     <StackPanel Orientation="Vertical">
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="Refresh Sells" Name="but_sells" Click="Button_Click"/>
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="AddSells" Name="butAddSells" Click="butAddSells_Click"/>
+                        <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="DelSells" Name="butDelSells" Click="butDelSells_Click"/>
                     </StackPanel>
                 </StackPanel>
             </TabItem>
             <TabItem Header="Product">
                 <StackPanel Orientation="Horizontal">
-                    <DataGrid Name="Products" Width="550" Grid.Row="1">
+                    <DataGrid Name="Products" Width="600" Grid.Row="1">
                     </DataGrid>
-                    <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Vertical" Width="auto">
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="AddProduct" Name="butAddProd" Click="butAddProd_Click"/>
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="RefreshProducts" Name="butProducts" Click="butProducts_Click"/>
+                        <TextBlock Margin="0,20,0,0" Text="Справка ТИП" Foreground="Purple" FontWeight="DemiBold"/>
+                        <CheckBox IsChecked="True" Content="Тип Кровля" IsEnabled="False"/>
+                        <CheckBox IsChecked="False" Content="Тип Отделка" IsEnabled="False"/>
                     </StackPanel>
                 </StackPanel>
             </TabItem>
@@ -62,6 +66,9 @@
                     <StackPanel Orientation="Vertical">
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="RefreshType" Name="butType" Click="butType_Click"/>
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="AddType" Name="butAddType" Click="butAddType_Click"/>
+                        <TextBlock Margin="0,20,0,0" Text="Справка ТИП" Foreground="Purple" FontWeight="DemiBold"/>
+                        <CheckBox IsChecked="True" Content="Тип Кровля" IsEnabled="False"/>
+                        <CheckBox IsChecked="False" Content="Тип Отделка" IsEnabled="False"/>
                     </StackPanel>
                 </StackPanel>
             </TabItem>

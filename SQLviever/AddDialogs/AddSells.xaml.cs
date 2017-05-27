@@ -31,10 +31,38 @@ namespace SQLviever.AddDialogs
 
         private void btn_OK_Click(object sender, RoutedEventArgs e)
         {
-            Connection conn = new Connection();
-            conn.InsertSells(Convert.ToDateTime(dateSell.SelectedDate), Convert.ToInt32(client_id.Text));
-            conn.Close();
-            DialogResult = true;
+            if (dateSell.Text.Length==0 || client_id.Text.Length == 0 )
+            {
+                MessageBox.Show("Заполните дату проджи и номер клиента!", " WTF?!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                Connection conn = new Connection();
+                if (dateDelivery.Text.Length != 0 && count.Text.Length == 0)
+                {
+                    conn.InsertSells(Convert.ToDateTime(dateSell.SelectedDate), Convert.ToInt32(client_id.Text), Convert.ToDateTime(dateDelivery.SelectedDate));
+                }
+                else if (dateDelivery.Text.Length != 0 && count.Text.Length!=0)
+                {
+                    conn.InsertSells(Convert.ToInt32(count.Text),Convert.ToDateTime(dateSell.SelectedDate), Convert.ToInt32(client_id.Text), Convert.ToDateTime(dateDelivery.SelectedDate));
+                }
+                else if (dateDelivery.Text.Length == 0 && count.Text.Length != 0)
+                {
+                    conn.InsertSells(Convert.ToInt32(count.Text), Convert.ToDateTime(dateSell.SelectedDate), Convert.ToInt32(client_id.Text));
+                }
+                else
+                {
+                    conn.InsertSells(Convert.ToDateTime(dateSell.SelectedDate), Convert.ToInt32(client_id.Text));
+                }
+                conn.Close();
+                DialogResult = true;
+            }
+            
+        }
+
+        private void count_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = "0123456789".IndexOf(e.Text) < 0;
         }
     }
 }
