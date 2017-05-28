@@ -17,10 +17,15 @@ namespace SQLviever.AddDialogs
     /// <summary>
     /// Логика взаимодействия для AddProduct.xaml
     /// </summary>
+    /// 
     public partial class AddProduct : Window
     {
-        public AddProduct()
+        private bool isUpdate;
+        private int ID;
+        public AddProduct(bool isUp, int _id)
         {
+            isUpdate = isUp;
+            ID = _id;
             InitializeComponent();
         }
 
@@ -31,16 +36,33 @@ namespace SQLviever.AddDialogs
 
         private void btn_OK_Click_1(object sender, RoutedEventArgs e)
         {
-            if (name.Text.Length == 0 || price.Text.Length == 0 || id_type.Text.Length == 0 || count.Text.Length == 0)
+            if (!isUpdate)
             {
-                MessageBox.Show("Заполните все текстовые поля!", " WTF?!", MessageBoxButton.OK, MessageBoxImage.Error);
+                if (name.Text.Length == 0 || price.Text.Length == 0 || id_type.Text.Length == 0 || count.Text.Length == 0)
+                {
+                    MessageBox.Show("Заполните все текстовые поля!", " WTF?!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    Connection cnn = new Connection();
+                    cnn.InsertProduct(name.Text, price.Text, Convert.ToBoolean(existing.IsChecked), Convert.ToInt32(id_type.Text), Convert.ToInt32(count.Text));
+                    cnn.Close();
+                    DialogResult = true;
+                }
             }
             else
             {
-                Connection cnn = new Connection();
-                cnn.InsertProduct(name.Text, price.Text, Convert.ToBoolean(existing.IsChecked), Convert.ToInt32(id_type.Text), Convert.ToInt32(count.Text));
-                cnn.Close();
-                DialogResult = true;
+                if (name.Text.Length == 0 || price.Text.Length == 0 || id_type.Text.Length == 0 || count.Text.Length == 0)
+                {
+                    MessageBox.Show("Заполните все текстовые поля!(update)", " WTF?!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    Connection cnn = new Connection();
+                    cnn.UpdateProduct(name.Text, price.Text, Convert.ToBoolean(existing.IsChecked), Convert.ToInt32(id_type.Text), Convert.ToInt32(count.Text),ID);
+                    cnn.Close();
+                    DialogResult = true;
+                }
             }
         }
     }

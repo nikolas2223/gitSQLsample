@@ -195,6 +195,39 @@ namespace SQLviever
             NpgsqlCommand cmd = new NpgsqlCommand("delete from \"Type\" where id_type = " + id, connect);
             cmd.ExecuteReader();
         }
+        public void UpdateSells(int count, DateTime date_sell, int client_id, DateTime delivery,int ID)
+        {
+            string p = ToBaStr(Convert.ToString(date_sell.Date));
+            string g = ToBaStr(Convert.ToString(delivery.Date));
+            NpgsqlCommand cmd = new NpgsqlCommand("UPDATE \"Sells\" SET date_sell = "+p+", id_client = "+client_id+", date_delivery = "+g+",cound = "+count+" WHERE id_sells = "+ID, connect);
+            cmd.ExecuteReader();
+        }
+        public void UpdateSells(DateTime date_sell, int client_id, int ID)
+        {
+            string p = ToBaStr(Convert.ToString(date_sell.Date));
+            NpgsqlCommand cmd = new NpgsqlCommand("UPDATE \"Sells\" SET date_sell = " + p + ", id_client = " + client_id + " WHERE id_sells = " + ID, connect);
+            cmd.ExecuteReader();
+        }
+        public void UpdateSells(int count, DateTime date_sell, int client_id, int ID)
+        {
+            string p = ToBaStr(Convert.ToString(date_sell.Date));
+            NpgsqlCommand cmd = new NpgsqlCommand("UPDATE \"Sells\" SET date_sell = " + p + ", id_client = " + client_id + ", cound = " + count + " WHERE id_sells = " + ID, connect);
+            cmd.ExecuteReader();
+        }
+        public void UpdateSells(DateTime date_sell, int client_id, DateTime delivery, int ID)
+        {
+            string p = ToBaStr(Convert.ToString(date_sell.Date));
+            string g = ToBaStr(Convert.ToString(delivery.Date));
+            NpgsqlCommand cmd = new NpgsqlCommand("UPDATE \"Sells\" SET date_sell = " + p + ", id_client = " + client_id + ", date_delivery = " + g + " WHERE id_sells = " + ID, connect);
+            cmd.ExecuteReader();
+        }
+        public void UpdateProduct(string name, string price, bool isExist, int id_type, int count,int ID)
+        {
+            name = ToBaStr(name);
+            price = ToBaStr(price);
+            NpgsqlCommand cmd = new NpgsqlCommand("UPDATE \"Product\" SET \"name\" = "+name+", price = "+price+", \"isExist\" = "+isExist+", id_type = "+id_type+", count = "+count+" WHERE id_product = "+ID, connect);
+            cmd.ExecuteReader();
+        }
         private string ToBaStr(string x)
         {
             x = "'" + x + "'";

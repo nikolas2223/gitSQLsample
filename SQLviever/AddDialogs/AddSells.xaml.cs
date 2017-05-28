@@ -19,8 +19,12 @@ namespace SQLviever.AddDialogs
     /// </summary>
     public partial class AddSells : Window
     {
-        public AddSells()
+        private bool isUpdate;
+        private int ID;
+        public AddSells(bool isUp, int _id)
         {
+            ID = _id;
+            isUpdate = isUp;
             InitializeComponent();
         }
 
@@ -31,33 +35,64 @@ namespace SQLviever.AddDialogs
 
         private void btn_OK_Click(object sender, RoutedEventArgs e)
         {
-            if (dateSell.Text.Length==0 || client_id.Text.Length == 0 )
+            if (!isUpdate)
             {
-                MessageBox.Show("Заполните дату проджи и номер клиента!", " WTF?!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else
-            {
-                Connection conn = new Connection();
-                if (dateDelivery.Text.Length != 0 && count.Text.Length == 0)
+                if (dateSell.Text.Length == 0 || client_id.Text.Length == 0)
                 {
-                    conn.InsertSells(Convert.ToDateTime(dateSell.SelectedDate), Convert.ToInt32(client_id.Text), Convert.ToDateTime(dateDelivery.SelectedDate));
-                }
-                else if (dateDelivery.Text.Length != 0 && count.Text.Length!=0)
-                {
-                    conn.InsertSells(Convert.ToInt32(count.Text),Convert.ToDateTime(dateSell.SelectedDate), Convert.ToInt32(client_id.Text), Convert.ToDateTime(dateDelivery.SelectedDate));
-                }
-                else if (dateDelivery.Text.Length == 0 && count.Text.Length != 0)
-                {
-                    conn.InsertSells(Convert.ToInt32(count.Text), Convert.ToDateTime(dateSell.SelectedDate), Convert.ToInt32(client_id.Text));
+                    MessageBox.Show("Заполните дату проджи и номер клиента!", " WTF?!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else
                 {
-                    conn.InsertSells(Convert.ToDateTime(dateSell.SelectedDate), Convert.ToInt32(client_id.Text));
+                    Connection conn = new Connection();
+                    if (dateDelivery.Text.Length != 0 && count.Text.Length == 0)
+                    {
+                        conn.InsertSells(Convert.ToDateTime(dateSell.SelectedDate), Convert.ToInt32(client_id.Text), Convert.ToDateTime(dateDelivery.SelectedDate));
+                    }
+                    else if (dateDelivery.Text.Length != 0 && count.Text.Length != 0)
+                    {
+                        conn.InsertSells(Convert.ToInt32(count.Text), Convert.ToDateTime(dateSell.SelectedDate), Convert.ToInt32(client_id.Text), Convert.ToDateTime(dateDelivery.SelectedDate));
+                    }
+                    else if (dateDelivery.Text.Length == 0 && count.Text.Length != 0)
+                    {
+                        conn.InsertSells(Convert.ToInt32(count.Text), Convert.ToDateTime(dateSell.SelectedDate), Convert.ToInt32(client_id.Text));
+                    }
+                    else
+                    {
+                        conn.InsertSells(Convert.ToDateTime(dateSell.SelectedDate), Convert.ToInt32(client_id.Text));
+                    }
+                    conn.Close();
+                    DialogResult = true;
                 }
-                conn.Close();
-                DialogResult = true;
             }
-            
+            else
+            {
+                if (dateSell.Text.Length == 0 || client_id.Text.Length == 0)
+                {
+                    MessageBox.Show("Заполните дату проджи и номер клиента!(update)", " WTF?!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    Connection conn = new Connection();
+                    if (dateDelivery.Text.Length != 0 && count.Text.Length == 0)
+                    {
+                        conn.UpdateSells(Convert.ToDateTime(dateSell.SelectedDate), Convert.ToInt32(client_id.Text), Convert.ToDateTime(dateDelivery.SelectedDate),ID);
+                    }
+                    else if (dateDelivery.Text.Length != 0 && count.Text.Length != 0)
+                    {
+                        conn.UpdateSells(Convert.ToInt32(count.Text), Convert.ToDateTime(dateSell.SelectedDate), Convert.ToInt32(client_id.Text), Convert.ToDateTime(dateDelivery.SelectedDate),ID);
+                    }
+                    else if (dateDelivery.Text.Length == 0 && count.Text.Length != 0)
+                    {
+                        conn.UpdateSells(Convert.ToInt32(count.Text), Convert.ToDateTime(dateSell.SelectedDate), Convert.ToInt32(client_id.Text), ID);
+                    }
+                    else
+                    {
+                        conn.UpdateSells(Convert.ToDateTime(dateSell.SelectedDate), Convert.ToInt32(client_id.Text),ID);
+                    }
+                    conn.Close();
+                    DialogResult = true;
+                }
+            }
         }
 
         private void count_PreviewTextInput(object sender, TextCompositionEventArgs e)

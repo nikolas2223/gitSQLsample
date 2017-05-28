@@ -23,6 +23,7 @@
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="Refresh Sells" Name="but_sells" Click="Button_Click"/>
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="AddSells" Name="butAddSells" Click="butAddSells_Click"/>
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="DelSells" Name="butDelSells" Click="butDelSells_Click"/>
+                        <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="UpdateSell" Name="butUpdateSell" Click="butUpdateSell_Click"/>
                     </StackPanel>
                 </StackPanel>
             </TabItem>
@@ -34,6 +35,7 @@
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="AddProduct" Name="butAddProd" Click="butAddProd_Click"/>
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="RefreshProducts" Name="butProducts" Click="butProducts_Click"/>
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="DelProduct" Name="butDelProduct" Click="butDelProduct_Click"/>
+                        <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="UpdateProduct" Name="butUpdateProduct" Click="butUpdateProduct_Click"/>
                         <TextBlock Margin="0,20,0,0" Text="Справка ТИП" Foreground="Purple" FontWeight="DemiBold"/>
                         <CheckBox IsChecked="True" Content="Тип Кровля" IsEnabled="False"/>
                         <CheckBox IsChecked="False" Content="Тип Отделка" IsEnabled="False"/>

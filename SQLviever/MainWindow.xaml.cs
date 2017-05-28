@@ -35,7 +35,7 @@ namespace SQLviever
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Connection Base = new Connection();
-            Sells.ItemsSource = Base.getSells();
+            Sells.ItemsSource = Base.getSells().OrderBy(x=> x.ID);
             Base.Close();
             Sells.Columns[1].Header = "Заказанное \nКоличество";
             Sells.Columns[2].Header = "Дата продажи";
@@ -46,7 +46,7 @@ namespace SQLviever
         private void butProducts_Click(object sender, RoutedEventArgs e)
         {
             Connection Base = new Connection();
-            Products.ItemsSource = Base.getProducts();
+            Products.ItemsSource = Base.getProducts().OrderBy(x=>x.ID);
             Base.Close();
             Products.Columns[1].Header = "Наименование";
             Products.Columns[2].Header = "Цена";
@@ -59,7 +59,7 @@ namespace SQLviever
         private void butClients_Click(object sender, RoutedEventArgs e)
         {
             Connection Base = new Connection();
-            Clients.ItemsSource = Base.getClients();
+            Clients.ItemsSource = Base.getClients().OrderBy(x=>x.ID);
             Base.Close();
             Clients.Columns[0].Header = "ID";
             Clients.Columns[1].Header = "Имя";
@@ -72,7 +72,7 @@ namespace SQLviever
         private void butSelProd_Click(object sender, RoutedEventArgs e)
         {
             Connection Base = new Connection();
-            SelProd.ItemsSource = Base.getSelProd();
+            SelProd.ItemsSource = Base.getSelProd().OrderBy(x=>x.ID);
             Base.Close();
             SelProd.Columns[0].Header = "Номер заказа";
             SelProd.Columns[1].Header = "Номер продажи";
@@ -82,7 +82,7 @@ namespace SQLviever
         private void butType_Click(object sender, RoutedEventArgs e)
         {
             Connection Base = new Connection();
-            Type.ItemsSource = Base.getType();
+            Type.ItemsSource = Base.getType().OrderBy(x=>x.ID);
             Base.Close();
             Type.Columns[0].Header = "ID";
             Type.Columns[1].Header = "Описание";
@@ -96,6 +96,7 @@ namespace SQLviever
 
         private void butAddClient_Click(object sender, RoutedEventArgs e)
         {
+            bool isUp = false;
             var dlg = new AddClients();
             if (dlg.ShowDialog() == true)
             {
@@ -105,6 +106,7 @@ namespace SQLviever
 
         private void butAddType_Click(object sender, RoutedEventArgs e)
         {
+            bool isUp = false;
             var dlg = new AddDialogs.AddType();
             if (dlg.ShowDialog() == true)
             {
@@ -119,7 +121,7 @@ namespace SQLviever
 
         private void butAddProd_Click(object sender, RoutedEventArgs e)
         {
-            var dlg = new AddDialogs.AddProduct();
+            var dlg = new AddDialogs.AddProduct(false,-1);
             if (dlg.ShowDialog() == true)
             {
                 MessageBox.Show("Очевидно, добавлена строка");
@@ -128,7 +130,7 @@ namespace SQLviever
 
         private void butAddSells_Click(object sender, RoutedEventArgs e)
         {
-            var dlg = new AddDialogs.AddSells();
+            var dlg = new AddDialogs.AddSells(false,-1);
             if (dlg.ShowDialog() == true)
             {
                 MessageBox.Show("Очевидно, добавлена строка");
@@ -177,6 +179,26 @@ namespace SQLviever
             Base.delType(t.ID);
             Base.Close();
             MessageBox.Show("Тип с номером: " + t.ID + "\nбыл удалён");
+        }
+
+        private void butUpdateSell_Click(object sender, RoutedEventArgs e)
+        {
+            Sell t = Sells.SelectedItem as Sell;
+            var dlg = new AddDialogs.AddSells(true, t.ID);
+            if (dlg.ShowDialog() == true)
+            {
+                MessageBox.Show("Очевидно, добавлена строка");
+            }
+        }
+
+        private void butUpdateProduct_Click(object sender, RoutedEventArgs e)
+        {
+            Product t = Products.SelectedItem as Product;
+            var dlg = new AddDialogs.AddProduct(true, t.ID);
+            if (dlg.ShowDialog() == true)
+            {
+                MessageBox.Show("Очевидно, добавлена строка");
+            }
         }
     }
 }
