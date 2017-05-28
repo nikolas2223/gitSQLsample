@@ -17,7 +17,7 @@
         <TabControl  Grid.Row="1">
             <TabItem Header="Sells">
                 <StackPanel Orientation="Horizontal">
-                    <DataGrid Name="Sells" Grid.Row="1" Width="550">
+                    <DataGrid IsReadOnly="True" CanUserAddRows="False" Name="Sells" Grid.Row="1" Width="550">
                     </DataGrid>
                     <StackPanel Orientation="Vertical">
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="Refresh Sells" Name="but_sells" Click="Button_Click"/>
@@ -28,11 +28,12 @@
             </TabItem>
             <TabItem Header="Product">
                 <StackPanel Orientation="Horizontal">
-                    <DataGrid Name="Products" Width="600" Grid.Row="1">
+                    <DataGrid IsReadOnly="True" CanUserAddRows="False" Name="Products" Width="600" Grid.Row="1">
                     </DataGrid>
                     <StackPanel Orientation="Vertical" Width="auto">
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="AddProduct" Name="butAddProd" Click="butAddProd_Click"/>
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="RefreshProducts" Name="butProducts" Click="butProducts_Click"/>
+                        <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="DelProduct" Name="butDelProduct" Click="butDelProduct_Click"/>
                         <TextBlock Margin="0,20,0,0" Text="Справка ТИП" Foreground="Purple" FontWeight="DemiBold"/>
                         <CheckBox IsChecked="True" Content="Тип Кровля" IsEnabled="False"/>
                         <CheckBox IsChecked="False" Content="Тип Отделка" IsEnabled="False"/>
@@ -41,31 +42,34 @@
             </TabItem>
             <TabItem Header="Client">
                 <StackPanel Orientation="Horizontal">
-                    <DataGrid Name="Clients" Width="550" Grid.Row="1">
+                    <DataGrid IsReadOnly="True" CanUserAddRows="False" Name="Clients" Width="550" Grid.Row="1">
                     </DataGrid>
                     <StackPanel Orientation="Vertical">
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="RefreshClients" Name="butClients" Click="butClients_Click"/>
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="AddClient" Name="butAddClient" Click="butAddClient_Click"/>
+                        <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="DelClient" Name="butDelClient" Click="butDelClient_Click"/>
                     </StackPanel>
                 </StackPanel>
             </TabItem>
             <TabItem Header="Sells-Product">
                 <StackPanel Orientation="Horizontal">
-                    <DataGrid Name="SelProd" Width="550" Grid.Row="1">
+                    <DataGrid IsReadOnly="True" CanUserAddRows="False" Name="SelProd" Width="550" Grid.Row="1">
                     </DataGrid>
                     <StackPanel Orientation="Vertical">
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="AddSells-Product" Name="butAddSelProd" Click="butAddSelProd_Click"/>
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="Sells-Product" Name="butSelProd" Click="butSelProd_Click"/>
+                        <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="DelSelPROD" Name="butDelSelProd" Click="butDelSelProd_Click"/>
                     </StackPanel>
                 </StackPanel>
             </TabItem>
             <TabItem Header="Type">
                 <StackPanel Orientation="Horizontal">
-                    <DataGrid Name="Type" Width="550" Grid.Row="1">
+                    <DataGrid IsReadOnly="True" CanUserAddRows="False" Name="Type" Width="550" Grid.Row="1">
                     </DataGrid>
                     <StackPanel Orientation="Vertical">
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="RefreshType" Name="butType" Click="butType_Click"/>
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="AddType" Name="butAddType" Click="butAddType_Click"/>
+                        <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="DelType" Name="butDelType" Click="butDelType_Click"/>
                         <TextBlock Margin="0,20,0,0" Text="Справка ТИП" Foreground="Purple" FontWeight="DemiBold"/>
                         <CheckBox IsChecked="True" Content="Тип Кровля" IsEnabled="False"/>
                         <CheckBox IsChecked="False" Content="Тип Отделка" IsEnabled="False"/>
