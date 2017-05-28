@@ -1,0 +1,24 @@
+﻿<Window x:Class="SQLviever.AddDialogs.AddSelProd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SQLviever.AddDialogs"
+        mc:Ignorable="d"
+        Title="AddSelProd" Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <TextBox Name="sels_ID" PreviewTextInput="sels_ID_PreviewTextInput"/>
+            <TextBox Name="product_ID" PreviewTextInput="sels_ID_PreviewTextInput"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Номер продажи"/>
+            <TextBlock Text="Номер товара"/>
+            <Button Margin="0,200,0,0" Content="OK" Click="Button_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -96,8 +96,7 @@ namespace SQLviever
 
         private void butAddClient_Click(object sender, RoutedEventArgs e)
         {
-            bool isUp = false;
-            var dlg = new AddClients();
+            var dlg = new AddClients(false,-1);
             if (dlg.ShowDialog() == true)
             {
                 MessageBox.Show("Очевидно, добавлена строка");
@@ -106,8 +105,7 @@ namespace SQLviever
 
         private void butAddType_Click(object sender, RoutedEventArgs e)
         {
-            bool isUp = false;
-            var dlg = new AddDialogs.AddType();
+            var dlg = new AddDialogs.AddType(false,-1);
             if (dlg.ShowDialog() == true)
             {
                 MessageBox.Show("Очевидно, добавлена строка");
@@ -116,7 +114,11 @@ namespace SQLviever
 
         private void butAddSelProd_Click(object sender, RoutedEventArgs e)
         {
-
+            var dlg = new AddDialogs.AddSelProd(false, -1);
+            if (dlg.ShowDialog() == true)
+            {
+                MessageBox.Show("Очевидно, добавлена строка");
+            }
         }
 
         private void butAddProd_Click(object sender, RoutedEventArgs e)
@@ -195,6 +197,36 @@ namespace SQLviever
         {
             Product t = Products.SelectedItem as Product;
             var dlg = new AddDialogs.AddProduct(true, t.ID);
+            if (dlg.ShowDialog() == true)
+            {
+                MessageBox.Show("Очевидно, добавлена строка");
+            }
+        }
+
+        private void butUpClient_Click(object sender, RoutedEventArgs e)
+        {
+            Client t = Clients.SelectedItem as Client;
+            var dlg = new AddClients(true, t.ID);
+            if (dlg.ShowDialog() == true)
+            {
+                MessageBox.Show("Очевидно, добавлена строка");
+            }
+        }
+
+        private void butUpSelProd_Click(object sender, RoutedEventArgs e)
+        {
+            SelProd t = SelProd.SelectedItem as SelProd;
+            var dlg = new AddDialogs.AddSelProd(true, t.ID);
+            if (dlg.ShowDialog() == true)
+            {
+                MessageBox.Show("Очевидно, добавлена строка");
+            }
+        }
+
+        private void butUpType_Click(object sender, RoutedEventArgs e)
+        {
+            Type t = Type.SelectedItem as Type;
+            var dlg = new AddDialogs.AddType(true, t.ID);
             if (dlg.ShowDialog() == true)
             {
                 MessageBox.Show("Очевидно, добавлена строка");

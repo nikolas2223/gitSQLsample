@@ -42,7 +42,7 @@
                     </StackPanel>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Client">
+            <TabItem Header="Client" HorizontalAlignment="Left" Width="46">
                 <StackPanel Orientation="Horizontal">
                     <DataGrid IsReadOnly="True" CanUserAddRows="False" Name="Clients" Width="550" Grid.Row="1">
                     </DataGrid>
@@ -50,6 +50,7 @@
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="RefreshClients" Name="butClients" Click="butClients_Click"/>
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="AddClient" Name="butAddClient" Click="butAddClient_Click"/>
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="DelClient" Name="butDelClient" Click="butDelClient_Click"/>
+                        <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="UpdateClient" Name="butUpClient" Click="butUpClient_Click"/>
                     </StackPanel>
                 </StackPanel>
             </TabItem>
@@ -61,6 +62,7 @@
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="AddSells-Product" Name="butAddSelProd" Click="butAddSelProd_Click"/>
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="Sells-Product" Name="butSelProd" Click="butSelProd_Click"/>
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="DelSelPROD" Name="butDelSelProd" Click="butDelSelProd_Click"/>
+                        <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="UPDATESelPROD" Name="butUpSelProd" Click="butUpSelProd_Click"/>
                     </StackPanel>
                 </StackPanel>
             </TabItem>
@@ -72,6 +74,7 @@
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="RefreshType" Name="butType" Click="butType_Click"/>
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="AddType" Name="butAddType" Click="butAddType_Click"/>
                         <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="DelType" Name="butDelType" Click="butDelType_Click"/>
+                        <Button Width="94" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Content="UpdateType" Name="butUpType" Click="butUpType_Click"/>
                         <TextBlock Margin="0,20,0,0" Text="Справка ТИП" Foreground="Purple" FontWeight="DemiBold"/>
                         <CheckBox IsChecked="True" Content="Тип Кровля" IsEnabled="False"/>
                         <CheckBox IsChecked="False" Content="Тип Отделка" IsEnabled="False"/>

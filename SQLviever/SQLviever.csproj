@@ -75,6 +75,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddDialogs\AddSelProd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddDialogs\AddType.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -91,6 +95,9 @@
     </Compile>
     <Compile Include="AddDialogs\AddSells.xaml.cs">
       <DependentUpon>AddSells.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddDialogs\AddSelProd.xaml.cs">
+      <DependentUpon>AddSelProd.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddDialogs\AddType.xaml.cs">
       <DependentUpon>AddType.xaml</DependentUpon>

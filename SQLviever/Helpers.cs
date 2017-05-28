@@ -170,6 +170,11 @@ namespace SQLviever
             NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO \"Sells\" (date_sell, id_client) values (" + p + "," + client_id + ")", connect);
             cmd.ExecuteReader();
         }
+        public void InsertSelProd(int sel_id, int prod_id)
+        {
+            NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO \"Sells-Product\" (id_sells, id_product) values (" + sel_id + "," + prod_id + ")", connect);
+            cmd.ExecuteReader();
+        }
         public void delSells(int id)
         {
             NpgsqlCommand cmd = new NpgsqlCommand("delete from \"Sells\" where id_sells = "+id, connect);
@@ -226,6 +231,26 @@ namespace SQLviever
             name = ToBaStr(name);
             price = ToBaStr(price);
             NpgsqlCommand cmd = new NpgsqlCommand("UPDATE \"Product\" SET \"name\" = "+name+", price = "+price+", \"isExist\" = "+isExist+", id_type = "+id_type+", count = "+count+" WHERE id_product = "+ID, connect);
+            cmd.ExecuteReader();
+        }
+        public void UpdateClients(string fName, string adress, string phone, bool regular, string name,int ID)
+        {
+            fName = ToBaStr(fName);
+            adress = ToBaStr(adress);
+            phone = ToBaStr(phone);
+            name = ToBaStr(name);
+            NpgsqlCommand cmd = new NpgsqlCommand("UPDATE \"Client\" SET \"familyName\" = "+fName+", adress = "+adress+", phone = "+phone+", \"isRegular\" = "+regular+", \"name\" = "+name+" WHERE id_client = "+ID, connect);
+            cmd.ExecuteReader();
+        }
+        public void UpdateType(string decr, bool tp,int ID)
+        {
+            decr = ToBaStr(decr);
+            NpgsqlCommand cmd = new NpgsqlCommand("UPDATE \"Type\" SET \"description\" = "+decr+", type = "+tp+" WHERE id_type = "+ID, connect);
+            cmd.ExecuteReader();
+        }
+        public void UpdateSelProd(int sel_id, int prod_id,int ID)
+        {
+            NpgsqlCommand cmd = new NpgsqlCommand("UPDATE \"Sells-Product\" SET id_sells = "+sel_id+", id_product = "+prod_id+" WHERE id = "+ID, connect);
             cmd.ExecuteReader();
         }
         private string ToBaStr(string x)

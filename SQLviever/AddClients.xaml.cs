@@ -19,23 +19,44 @@ namespace SQLviever
     /// </summary>
     public partial class AddClients : Window
     {
-        public AddClients()
+        private bool isUpdate;
+        private int ID;
+        public AddClients(bool isUp, int _id)
         {
+            isUpdate = isUp;
+            ID = _id;
             InitializeComponent();
         }
 
         private void btn_OK_Click(object sender, RoutedEventArgs e)
         {
-            if(fname.Text.Length == 0 || adress.Text.Length==0 || phone.Text.Length == 0 || name.Text.Length == 0)
+            if (!isUpdate)
             {
-                MessageBox.Show("Заполните все текстовые поля!"," WTF?!" , MessageBoxButton.OK, MessageBoxImage.Error);
+                if (fname.Text.Length == 0 || adress.Text.Length == 0 || phone.Text.Length == 0 || name.Text.Length == 0)
+                {
+                    MessageBox.Show("Заполните все текстовые поля!", " WTF?!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    Connection cnn = new Connection();
+                    cnn.InsertClients(fname.Text, adress.Text, phone.Text, Convert.ToBoolean(regularity.IsChecked), name.Text);
+                    cnn.Close();
+                    DialogResult = true;
+                }
             }
             else
             {
-                Connection cnn = new Connection();
-                cnn.InsertClients(fname.Text, adress.Text, phone.Text, Convert.ToBoolean(regularity.IsChecked), name.Text);
-                cnn.Close();
-                DialogResult = true;
+                if (fname.Text.Length == 0 || adress.Text.Length == 0 || phone.Text.Length == 0 || name.Text.Length == 0)
+                {
+                    MessageBox.Show("Заполните все текстовые поля!(update)", " WTF?!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    Connection cnn = new Connection();
+                    cnn.UpdateClients(fname.Text, adress.Text, phone.Text, Convert.ToBoolean(regularity.IsChecked), name.Text,ID);
+                    cnn.Close();
+                    DialogResult = true;
+                }
             }
         }
 

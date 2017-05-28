@@ -20,8 +20,12 @@ namespace SQLviever.AddDialogs
     public partial class AddType : Window
     {
         public bool type;
-        public AddType()
+        private bool isUpdate;
+        private int ID;
+        public AddType(bool isUp, int _id)
         {
+            isUpdate = isUp;
+            ID = _id;
             InitializeComponent();
         }
 
@@ -35,16 +39,34 @@ namespace SQLviever.AddDialogs
             {
                 type = false;
             }
-            if (description.Text.Length > 0 && description.Text[0] == ' ' || description.Text.Length == 0)
+
+            if (!isUpdate)
             {
-                MessageBox.Show("Заполните все текстовые поля! \n Нельзя начинать строку с пробела.", " WTF?!", MessageBoxButton.OK, MessageBoxImage.Error);
+                if (description.Text.Length > 0 && description.Text[0] == ' ' || description.Text.Length == 0)
+                {
+                    MessageBox.Show("Заполните все текстовые поля! \n Нельзя начинать строку с пробела.", " WTF?!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    Connection con = new Connection();
+                    con.InsertType(description.Text, type);
+                    con.Close();
+                    DialogResult = true;
+                }
             }
             else
             {
-                Connection con = new Connection();
-                con.InsertType(description.Text, type);
-                con.Close();
-                DialogResult = true;
+                if (description.Text.Length > 0 && description.Text[0] == ' ' || description.Text.Length == 0)
+                {
+                    MessageBox.Show("Заполните все текстовые поля! \n Нельзя начинать строку с пробела.", " WTF?!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    Connection con = new Connection();
+                    con.UpdateType(description.Text, type,ID);
+                    con.Close();
+                    DialogResult = true;
+                }
             }
         }
     }
